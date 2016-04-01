@@ -43,7 +43,7 @@ main()
        case 13: close_pipe(); break;
 		
 		case 14: sleep(); break;
-	   case 15: putc(); break;
+	   //case 15: putc(); break;
 
            default: invalid(name); break;
        }

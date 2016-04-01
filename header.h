@@ -38,6 +38,9 @@
 #define PSIZE     10
 #define NPIPE     10
 
+/******** For Semaphores *********/
+#define BLOCK    6
+
 
 extern int color;
 //extern int MTXSEG  = 0x1000;
@@ -199,6 +202,9 @@ typedef struct proc{
     int    status;             // status = FREE|READY|RUNNING|SLEEP|ZOMBIE
     int    ppid;               // parent pid
     struct proc *parent;
+    
+    struct semaphore *sem;     // pointer to SEMPAPHORE if Proce is blocked
+    
     int    priority;
     int    event;
 	 int    sleeptime;
@@ -210,6 +216,12 @@ typedef struct proc{
 
     int    kstack[SSIZE];      // per proc stack area
 }PROC;
+
+typedef struct semaphore{
+   int  lock;      // spinlock
+   int  value;
+   PROC *queue;      /* a FIFO queue */
+} SEMAPHORE;
 
 
 struct partition {         // Partition table entry in MBR

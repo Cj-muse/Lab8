@@ -20,12 +20,12 @@
        .globl _tswitch
 	
         ! added functions for KUMODE
-	.globl _int80h,_goUmode,_kcinth
+	.globl _int80h,_goUmode,_kcinth, _kbhandler
 	
         ! added functions for timer interrupt
 	.globl _lock,_unlock,_int_off,_int_on
 	.globl _in_byte,_out_byte
-        .globl _tinth,_thandler
+        .globl _tinth,_thandler, _kbinth
 	
         jmpi   start,MTXSEG    ! just to make sure CS=0x1000
 start:	mov  ax,cs
@@ -119,6 +119,7 @@ INK =   8
 
 _int80h: INTH kcinth
 _tinth:  INTH thandler
+_kbinth: INTH kbhandler
 
 !*===========================================================================*
 !*		_ireturn  and  goUmode()       				     *

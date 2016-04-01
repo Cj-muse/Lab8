@@ -25,11 +25,14 @@ int find_cmd(name) char *name;
    return(-1);
 }
 
+int getc()
+{
+  return syscall(90,0,0);
+}
+
 int putc(char c)
 {
-	//char c;
-	//printf("enter a character\n");
-	syscall(91,c,0,0);
+	return syscall(91,c,0,0);
 }
 
 int sleep()

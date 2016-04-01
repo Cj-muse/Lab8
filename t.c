@@ -112,13 +112,13 @@ main()
 	
 	// install KBD interrupt handler, initilize kbd driver
    set_vector(9, kbinth); 
-   kbinit();
+   kbd_init();
 
-   /*kfork("/bin/u1");     // P0 kfork() P1
-	kfork("/bin/u1");     // P0 kfork() P2
-	kfork("/bin/u1");     // P0 kfork() P3
-	kfork("/bin/u1");     // P0 kfork() P4	*/
-	//lock();
+   kfork("/bin/u1");     // P0 kfork() P1
+	//kfork("/bin/u1");     // P0 kfork() P2
+	//kfork("/bin/u1");     // P0 kfork() P3
+	//kfork("/bin/u1");     // P0 kfork() P4	*/
+	lock();
 	setRuntime();
 	set_vector(8, tinth); // install address of tinth() to vector 8 
 	timer_init();
