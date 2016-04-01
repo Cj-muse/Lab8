@@ -38,6 +38,7 @@
 #define PSIZE     10
 #define NPIPE     10
 
+
 extern int color;
 //extern int MTXSEG  = 0x1000;
 
