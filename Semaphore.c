@@ -1,9 +1,6 @@
 #include "header.h"
 
-
-
 extern int int_off(), int_on();
-
 
 int P(SEMAPHORE *s)
 {
@@ -12,7 +9,8 @@ int P(SEMAPHORE *s)
     sr = int_off();
 
     s->value--;
-    if (s->value < 0){
+    if (s->value < 0)
+    {
        //printf("proc %d blocked in P() at semaphore = %x\n",unning->pid, s);
        running->sem = s;   // blocked on this semaphore
        running->status = BLOCK;
@@ -28,7 +26,8 @@ int V(SEMAPHORE *s)
     sr = int_off();
 
     s->value++;
-    if (s->value<=0){
+    if (s->value<=0)
+    {
        p = dequeue(&(s->queue));
        p->status = READY;
        p->sem = 0;               // no longer blocked at this semaphore
